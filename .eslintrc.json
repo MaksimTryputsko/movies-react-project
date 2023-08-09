@@ -1,0 +1,154 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:promise/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:i18next/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": ["import", "@typescript-eslint", "promise", "react", "i18next"],
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "sourceType": "module",
+    "ecmaVersion": 2019
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": ["./tsconfig.json"]
+      },
+      "webpack": {
+        "config": {
+          "resolve": {
+            "alias": {
+              "@/": "./src",
+              "extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "rules": {
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-handler-names": 0,
+    "react/jsx-key": 1,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-sort-props": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/require-default-props": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+
+    "promise/prefer-await-to-then": 2,
+    "class-methods-use-this:": ["off"],
+    "no-param-reassign": 0,
+
+    "@typescript-eslint/array-type": [
+      2,
+      {
+        "default": "array",
+        "readonly": "array"
+      }
+    ],
+    "@typescript-eslint/no-unnecessary-condition": 2,
+    "@typescript-eslint/prefer-function-type": 1,
+    "@typescript-eslint/promise-function-async": 2,
+    "no-return-await": 0,
+    "@typescript-eslint/return-await": 1,
+    "@typescript-eslint/consistent-generic-constructors": 1,
+    "@typescript-eslint/consistent-type-definitions": 2,
+    "@typescript-eslint/member-ordering": [
+      2,
+      {
+        "default": {
+          "memberTypes": [
+            "signature",
+            "field",
+            "constructor",
+            "get",
+            "set",
+            "method"
+          ],
+          "order": "alphabetically-case-insensitive"
+        }
+      }
+    ],
+    "@typescript-eslint/method-signature-style": 2,
+    "import/prefer-default-export": 0,
+    "import/named": 0,
+    "import/no-unused-modules": [1, { "unusedExports": true }],
+    "import/no-cycle": [2, { "ignoreExternal": true, "maxDepth": 1 }],
+    "import/no-self-import": 2,
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": [
+          "**/*{.,_}{test,spec}.{ts,tsx}", // tests where the extension or filename suffix denotes that it is a test
+          "**/jest.config.ts", // jest config
+          "**/jest.setup.ts", // jest setup,
+          "**/config/jest/*",
+          "**/build/**/*",
+          "**/config/storybook/**/*",
+          "**/*.stories.tsx"
+        ],
+        "peerDependencies": false,
+        "optionalDependencies": false,
+        "bundledDependencies": false
+      }
+    ],
+    "import/newline-after-import": 2,
+    "import/order": [
+      2,
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "groups": [
+          "builtin",
+          "external",
+          "parent",
+          "internal",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*{.,_}{test,spec}.{ts,tsx}"],
+      "rules": {
+        "i18next/no-literal-string": 0
+      }
+    },
+    {
+      "files": ["**/*.stories.tsx"],
+      "rules": {
+        "import/no-unused-modules": 0,
+        "i18next/no-literal-string": 0
+      }
+    }
+  ]
+}
