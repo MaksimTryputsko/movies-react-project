@@ -89,15 +89,7 @@
     "import/no-cycle": [2, { "ignoreExternal": true, "maxDepth": 1 }],
     "import/no-self-import": 2,
     "import/no-unresolved": [2, { "caseSensitive": false }],
-    "import/no-extraneous-dependencies": [
-      2,
-      {
-        "devDependencies": [],
-        "peerDependencies": false,
-        "optionalDependencies": false,
-        "bundledDependencies": false
-      }
-    ],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
     "import/newline-after-import": 2,
     "import/order": [
       2,
@@ -116,5 +108,6 @@
         "newlines-between": "always"
       }
     ]
+    
   }
 }
