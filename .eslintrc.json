@@ -11,11 +11,10 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "plugin:i18next/recommended",
     "plugin:prettier/recommended",
     "prettier"
   ],
-  "plugins": ["import", "@typescript-eslint", "promise", "react", "i18next"],
+  "plugins": ["import", "@typescript-eslint", "promise", "react"],
   "parserOptions": {
     "project": ["./tsconfig.json"],
     "sourceType": "module",
@@ -29,16 +28,6 @@
       "typescript": {
         "alwaysTryTypes": true,
         "project": ["./tsconfig.json"]
-      },
-      "webpack": {
-        "config": {
-          "resolve": {
-            "alias": {
-              "@/": "./src",
-              "extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"]
-            }
-          }
-        }
       }
     }
   },
@@ -103,15 +92,7 @@
     "import/no-extraneous-dependencies": [
       2,
       {
-        "devDependencies": [
-          "**/*{.,_}{test,spec}.{ts,tsx}", // tests where the extension or filename suffix denotes that it is a test
-          "**/jest.config.ts", // jest config
-          "**/jest.setup.ts", // jest setup,
-          "**/config/jest/*",
-          "**/build/**/*",
-          "**/config/storybook/**/*",
-          "**/*.stories.tsx"
-        ],
+        "devDependencies": [],
         "peerDependencies": false,
         "optionalDependencies": false,
         "bundledDependencies": false
@@ -135,20 +116,5 @@
         "newlines-between": "always"
       }
     ]
-  },
-  "overrides": [
-    {
-      "files": ["**/*{.,_}{test,spec}.{ts,tsx}"],
-      "rules": {
-        "i18next/no-literal-string": 0
-      }
-    },
-    {
-      "files": ["**/*.stories.tsx"],
-      "rules": {
-        "import/no-unused-modules": 0,
-        "i18next/no-literal-string": 0
-      }
-    }
-  ]
+  }
 }

@@ -1,0 +1,18 @@
+{
+  "arrowParens": "always",
+  "printWidth": 100,
+  "semi": true,
+  "singleQuote": false,
+  "singleAttributePerLine": true,
+  "parser": "flow",
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": ["*.scss", "*.css"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
