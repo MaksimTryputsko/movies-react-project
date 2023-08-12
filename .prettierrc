@@ -4,7 +4,6 @@
   "semi": false,
   "singleQuote": false,
   "singleAttributePerLine": true,
-  "parser": "flow",
   "tabWidth": 2,
   "trailingComma": "all",
   "overrides": [

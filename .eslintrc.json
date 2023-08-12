@@ -11,7 +11,6 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "plugin:prettier/recommended",
     "prettier"
   ],
   "plugins": ["import", "@typescript-eslint", "promise", "react"],
@@ -32,6 +31,7 @@
     }
   },
   "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
     "react/function-component-definition": [
       2,
       {
@@ -70,14 +70,7 @@
       2,
       {
         "default": {
-          "memberTypes": [
-            "signature",
-            "field",
-            "constructor",
-            "get",
-            "set",
-            "method"
-          ],
+          "memberTypes": ["signature", "field", "constructor", "get", "set", "method"],
           "order": "alphabetically-case-insensitive"
         }
       }
@@ -89,7 +82,10 @@
     "import/no-cycle": [2, { "ignoreExternal": true, "maxDepth": 1 }],
     "import/no-self-import": 2,
     "import/no-unresolved": [2, { "caseSensitive": false }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
+    ],
     "import/newline-after-import": 2,
     "import/order": [
       2,
@@ -97,17 +93,9 @@
         "alphabetize": {
           "order": "asc"
         },
-        "groups": [
-          "builtin",
-          "external",
-          "parent",
-          "internal",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "parent", "internal", "sibling", "index"],
         "newlines-between": "always"
       }
     ]
-    
   }
 }
