@@ -3,7 +3,7 @@ import classNames from "classnames"
 import React, { useEffect, useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
-import { sendRequestSearchMovies } from "../../../shared/api/sendRequest"
+import { sendRequest } from "../../../shared/api/sendRequest"
 import { MAIN_PAGE } from "../../../shared/constants/path"
 import { IMovie } from "../../../shared/imovie.interface"
 
@@ -25,10 +25,10 @@ const Layout = ({ setSearchMovieFromRequest }: ILayoutProps) => {
   useEffect(() => {
     const getSearchMovies = async () => {
       try {
-        const value = await sendRequestSearchMovies(debounceSearchMovies)
-        if (value !== undefined) {
+        const value = await sendRequest({ search: debounceSearchMovies })
+        if (value?.data.results !== undefined) {
           setFoundMovies(true)
-          const searchMoviesFromRequest = await value.results
+          const searchMoviesFromRequest = await value.data.results
           setSearchMovies(searchMoviesFromRequest)
         } else {
           setFoundMovies(false)

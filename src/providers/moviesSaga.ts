@@ -11,8 +11,8 @@ export const dataForTheRequest = {
 
 function* workGetMoviesFetch() {
   const movies: IMovie[] = yield call(async () => {
-    const getMovies = await sendRequest(dataForTheRequest.numberPage)
-    return getMovies.results
+    const getMovies = await sendRequest({ numberPage: dataForTheRequest.numberPage })
+    return getMovies?.data.results
   })
 
   yield put(addMovies(movies))
