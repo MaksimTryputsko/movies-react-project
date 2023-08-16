@@ -1,9 +1,14 @@
-import { Test } from "./Test"
+import { BrowserRouter } from "react-router-dom"
+
+import { MoviesMain } from "./modules/movies/pages/router/MoviesMainPage"
+
 import "./App.css"
 
 const App = () => (
   <div className="App">
-    <Test />
+    <BrowserRouter>
+      <MoviesMain />
+    </BrowserRouter>
   </div>
 )
 

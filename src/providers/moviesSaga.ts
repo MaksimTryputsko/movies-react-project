@@ -1,18 +1,26 @@
 import { call, put, takeEvery } from "redux-saga/effects"
 
-import { addMovies, IMovie } from "./moviesSlice"
+import { sendRequest } from "../shared/api/sendRequest"
+import { IMovie } from "../shared/imovie.interface"
+
+import { addMovies, initialIsLoading, setDefaultIsLoading } from "./moviesSlice"
+
+export const dataForTheRequest = {
+  numberPage: 1,
+}
 
 function* workGetMoviesFetch() {
   const movies: IMovie[] = yield call(async () => {
-    const getMovies = await fetch("https://jsonplaceholder.typicode.com/posts")
-    return getMovies.json()
+    const getMovies = await sendRequest(dataForTheRequest.numberPage)
+    return getMovies.results
   })
 
-  yield put(addMovies(movies.splice(0, 10)))
+  yield put(addMovies(movies))
+  yield setDefaultIsLoading()
 }
 
 function* moviesSaga() {
-  yield takeEvery("movies/addMovies", workGetMoviesFetch)
+  yield takeEvery(initialIsLoading.type, workGetMoviesFetch)
 }
 
 export default moviesSaga

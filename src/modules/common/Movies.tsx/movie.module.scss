@@ -1,0 +1,49 @@
+.poster {
+  position: relative;
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.posterImage {
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 180px;
+  height: 270px;
+  background-size: cover;
+  transition: 1s;
+}
+
+.iconHeart {
+  display: none;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+}
+
+.posterImage:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+}
+.posterImage:hover + .iconHeart {
+  display: block;
+}
+.iconHeart:hover {
+  cursor: pointer;
+  display: block;
+}
+.rating {
+  background-color: rgb(59, 179, 59);
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  top: 25%;
+  left: 2%;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.description {
+  padding-top: 10px;
+}
