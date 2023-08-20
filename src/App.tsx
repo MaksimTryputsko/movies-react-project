@@ -1,15 +1,14 @@
 import { BrowserRouter } from "react-router-dom"
 
+import styles from "./App.scss"
 import { MoviesMain } from "./modules/movies/pages/router/MoviesMainPage"
 
-import "./App.css"
-
 const App = () => (
-  <div className="App">
+  <div className={styles.app}>
     <BrowserRouter>
       <MoviesMain />
     </BrowserRouter>
   </div>
 )
 
-export default App
+export { App }

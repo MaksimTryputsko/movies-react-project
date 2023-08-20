@@ -1,8 +1,8 @@
 import React from "react"
 
-import { ButtonOutlined } from "../../../../components/ButtonOutlined"
-import { IMovie } from "../../../../shared/imovie.interface"
+import { Button } from "../../../../components/Button"
 import { Movie } from "../../../common/Movies.tsx/Movie"
+import { IMovie } from "../../interface/imovie.interface"
 
 import styles from "./moviesList.module.scss"
 
@@ -27,8 +27,18 @@ const MoviesList: React.FC<IPropsMovie> = ({ movies, nextPage, previousPage }) =
       ))}
     </div>
     <div className={styles.wrapperForButton}>
-      <ButtonOutlined onClick={previousPage}>PREVIOUS PAGE</ButtonOutlined>
-      <ButtonOutlined onClick={nextPage}>Next Page</ButtonOutlined>
+      <Button
+        onClick={previousPage}
+        type="outlined"
+      >
+        Previous page
+      </Button>
+      <Button
+        onClick={nextPage}
+        type="outlined"
+      >
+        Next Page
+      </Button>
     </div>
   </>
 )

@@ -15,7 +15,7 @@ interface IPropsMovie {
 const Movie: React.FC<IPropsMovie> = ({ image, date, rating, title, movieId }) => {
   const [favorite, setFavorite] = useState(false)
   const [year] = date.split("-")
-
+  const handleClick = () => setFavorite(!favorite)
   return (
     <Link to={`${movieId}`}>
       <div className={styles.poster}>
@@ -27,14 +27,14 @@ const Movie: React.FC<IPropsMovie> = ({ image, date, rating, title, movieId }) =
           <AiFillHeart
             className={styles.iconHeart}
             color="red"
-            onClick={() => setFavorite(!favorite)}
+            onClick={handleClick}
             size="30"
           />
         ) : (
           <AiOutlineHeart
             className={styles.iconHeart}
             color="red"
-            onClick={() => setFavorite(!favorite)}
+            onClick={handleClick}
             size="30"
           />
         )}

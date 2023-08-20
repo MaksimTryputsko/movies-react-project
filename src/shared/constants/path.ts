@@ -1,1 +1,1 @@
-export const MAIN_PAGE: string = "/"
+export const MAIN_PAGE: string = "/home"

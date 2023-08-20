@@ -11,11 +11,13 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "prettier"
+    "prettier",
+    "./config-overrides.js"
   ],
   "plugins": ["import", "@typescript-eslint", "promise", "react"],
   "parserOptions": {
     "project": ["./tsconfig.json"],
+    // "tsconfigRootDir": "config-overrides.js",
     "sourceType": "module",
     "ecmaVersion": 2019
   },
