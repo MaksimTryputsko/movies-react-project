@@ -26,15 +26,14 @@ const moviesSlice = createSlice({
     addMovies: (state, action: PayloadAction<IMovie[]>) => {
       state.list = action.payload
     },
-    isCompletedLoadingDataFromTheServer: (state) => {
+    isCompletedMoviesLoading: (state) => {
       state.isLoading = false
     },
   },
 })
 const moviesReducer = moviesSlice.reducer
 
-export const { addMovies, loadingDataFromTheServer, isCompletedLoadingDataFromTheServer } =
-  moviesSlice.actions
+export const { addMovies, loadingDataFromTheServer, isCompletedMoviesLoading } = moviesSlice.actions
 
 export const moviesSelector = (state: RootState) => state.movies.list
 export { moviesReducer }

@@ -11,8 +11,8 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "prettier",
-    "./config-overrides.js"
+    "prettier"
+    // "./config-overrides.js"
   ],
   "plugins": ["import", "@typescript-eslint", "promise", "react"],
   "parserOptions": {
@@ -33,6 +33,8 @@
     }
   },
   "rules": {
+    "curly": "warn",
+
     "@typescript-eslint/no-explicit-any": "warn",
     "react/function-component-definition": [
       2,

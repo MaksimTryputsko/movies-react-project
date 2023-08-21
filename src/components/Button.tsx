@@ -3,7 +3,7 @@ import React, { ReactNode } from "react"
 
 interface IButtonOutlinedProps {
   children: ReactNode
-  onClick: () => void
+  onClick?: () => void
   type: "outlined" | "text" | "contained"
 }
 const Button = ({ children, onClick, type }: IButtonOutlinedProps) => (

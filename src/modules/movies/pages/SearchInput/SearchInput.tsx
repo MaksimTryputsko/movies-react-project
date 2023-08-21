@@ -1,30 +1,27 @@
 import { useDebounce } from "@uidotdev/usehooks"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
-import { Input } from "@components/Input"
+import { Input } from "src/components/Input"
 
 interface ISearchInput {
-  clearSearchInput: boolean
   onTextChange: (value: string) => void
-  setClearSearchInput: (value: boolean) => void
 }
 
-const SearchInput = ({ onTextChange, clearSearchInput, setClearSearchInput }: ISearchInput) => {
+const SearchInput = ({ onTextChange }: ISearchInput) => {
   const [search, setSearch] = useState("")
   const debounceSearchMovies = useDebounce(search, 300)
-  useEffect(() => {
-    setClearSearchInput(false)
-    if (clearSearchInput) {
-      setSearch("")
-    }
+
+  const handleSearchText = (text: string) => {
+    setSearch(text)
     if (search.length > 0) {
       onTextChange(debounceSearchMovies)
     }
-  }, [debounceSearchMovies, clearSearchInput, onTextChange, search.length, setClearSearchInput])
-
+  }
+  const clearInput = () => setSearch("")
   return (
     <Input
-      setValue={setSearch}
+      handleSearchText={handleSearchText}
+      onClick={clearInput}
       type="outlined"
       value={search}
     />

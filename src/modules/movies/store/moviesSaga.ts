@@ -3,11 +3,7 @@ import { call, put, takeEvery } from "redux-saga/effects"
 import { popularMoviesService } from "../../../shared/api/popularMoviesService"
 import { IMovie } from "../interface/imovie.interface"
 
-import {
-  addMovies,
-  loadingDataFromTheServer,
-  isCompletedLoadingDataFromTheServer,
-} from "./moviesSlice"
+import { addMovies, loadingDataFromTheServer, isCompletedMoviesLoading } from "./moviesSlice"
 
 interface IAction {
   payload: number
@@ -20,7 +16,7 @@ function* workGetMoviesFetch(action: IAction) {
     return getMovies?.results
   })
   yield put(addMovies(movies))
-  yield isCompletedLoadingDataFromTheServer()
+  yield isCompletedMoviesLoading()
 }
 
 function* moviesSaga() {

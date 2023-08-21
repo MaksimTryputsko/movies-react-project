@@ -19,7 +19,7 @@ const MoviesList: React.FC<IPropsMovie> = ({ movies, nextPage, previousPage }) =
         <Movie
           key={movie.id}
           date={movie.release_date}
-          image={movie.backdrop_path}
+          image={movie.poster_path}
           movieId={movie.id}
           rating={movie.vote_average}
           title={movie.title}
