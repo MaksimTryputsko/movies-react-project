@@ -2,21 +2,15 @@ import React, { useEffect, useState } from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 
 import { useAppSelector, useAppDispatch } from "../../../../hooks/hooks"
-import { MAIN_PAGE } from "../../../../shared/constants/path"
+import { DEFAULT_PAGE, FAVORITE_PAGE, ID_PAGES, MAIN_PAGE } from "../../../../shared/constants/path"
+import { FavoritesMovies } from "../../../FavoritesMovies/FavoritesMovies"
 import { Layout } from "../../../common/Layout/Layout"
-import { IMovie } from "../../interface/imovie.interface"
-import { favoritesMoviesSelector } from "../../store/favoritesMoviesSlice"
 import { moviesSelector, loadingDataFromTheServer } from "../../store/moviesSlice"
-import { FavoritesMovies } from "../FavoritesMovies/FavoritesMovies"
 import { MovieDescription } from "../MoviesDescription/MovieDescription"
 import { MoviesList } from "../MoviesList/MoviesList"
 
-import { movieByIdService } from "src/shared/api/movieByIdService"
-
 const MoviesMain = () => {
   const [numPage, setNumPage] = useState(1)
-  const moviesFavoritesId = useAppSelector(favoritesMoviesSelector)
-
   const nextPage = () => setNumPage(numPage + 1)
   const previousPage = () => setNumPage(numPage > 1 ? numPage - 1 : 1)
 
@@ -27,17 +21,6 @@ const MoviesMain = () => {
     dispatch(loadingDataFromTheServer(numPage))
   }, [dispatch, numPage])
 
-  const [favoritesMovies, setFavoritesMovies] = useState<IMovie[]>([])
-
-  useEffect(() => {
-    const favoritesMoviesFromSendRequest: IMovie[] = []
-    moviesFavoritesId.forEach(async (id) => {
-      const getMovieFavoriteData = await movieByIdService.getMoviesById(`${id}`)
-      favoritesMoviesFromSendRequest.push(getMovieFavoriteData)
-    })
-    setFavoritesMovies(favoritesMoviesFromSendRequest)
-  }, [moviesFavoritesId])
-
   return (
     <Routes>
       <Route
@@ -47,7 +30,7 @@ const MoviesMain = () => {
             to={MAIN_PAGE}
           />
         }
-        path="/"
+        path={DEFAULT_PAGE}
       />
       <Route
         element={<Layout />}
@@ -55,7 +38,7 @@ const MoviesMain = () => {
       >
         <Route
           element={<MovieDescription />}
-          path="/home/:id"
+          path={`${MAIN_PAGE}/${ID_PAGES}`}
         />
 
         <Route
@@ -69,8 +52,8 @@ const MoviesMain = () => {
           path={MAIN_PAGE}
         />
         <Route
-          element={<FavoritesMovies favoritesMoviesList={favoritesMovies} />}
-          path="/home/favoritesMovies"
+          element={<FavoritesMovies />}
+          path={`${MAIN_PAGE}/${FAVORITE_PAGE}`}
         />
       </Route>
     </Routes>

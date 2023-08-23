@@ -1,23 +1,32 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
 
 import { Heart } from "src/components/Heart/Heart"
 import { Text } from "src/components/TextComponent/Text"
+import { MAIN_PAGE } from "src/shared/constants/path"
 
 import styles from "./movie.module.scss"
 
 interface IPropsMovie {
+  changeStateHeart?: (value: boolean) => void
   date: string
   image: string
   movieId: number
   rating: number
+  stateHeart?: boolean
   title: string
 }
 
-const Movie: React.FC<IPropsMovie> = ({ image, date, rating, title, movieId }) => {
-  const [favorite, setFavorite] = useState(false)
+const Movie: React.FC<IPropsMovie> = ({
+  image,
+  date,
+  rating,
+  title,
+  movieId,
+  stateHeart,
+  changeStateHeart,
+}) => {
   const [year] = date.split("-")
-  const handleClick = () => setFavorite(!favorite)
   return (
     <div className={styles.wrapperForPosterImage}>
       <button
@@ -25,12 +34,12 @@ const Movie: React.FC<IPropsMovie> = ({ image, date, rating, title, movieId }) =
         type="button"
       >
         <Heart
-          favorite={favorite}
+          changeStateHeart={changeStateHeart}
           favoriteMovieId={movieId}
-          handleClick={handleClick}
+          stateHeart={stateHeart}
         />
       </button>
-      <Link to={`/home/${movieId}`}>
+      <Link to={`${MAIN_PAGE}/${movieId}`}>
         <div className={styles.poster}>
           <div
             className={styles.posterImage}
@@ -46,7 +55,6 @@ const Movie: React.FC<IPropsMovie> = ({ image, date, rating, title, movieId }) =
               <Text size="S">{year}</Text>
             </div>
             <div className={styles.heart} />
-            <div className={styles.test} />
           </div>
         </div>
       </Link>

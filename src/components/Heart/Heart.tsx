@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 
 import { useAppDispatch } from "src/hooks/hooks"
@@ -6,26 +6,41 @@ import {
   addFavoritesMoviesId,
   removeFavoritesId,
 } from "src/modules/movies/store/favoritesMoviesSlice"
+import { addFavoriteIdToLocalStorage } from "src/shared/localStorage/addFavoriteIdToLocalStorage"
+import { removeFavoriteIdFromLocalStorage } from "src/shared/localStorage/removeFavoriteIdFromLocalStorage"
+import { setFavoriteDefaultHeart } from "src/shared/localStorage/setFavoriteDefaultHeart"
 
 import styles from "./heart.module.scss"
 
 interface IHeart {
-  favorite: boolean
+  changeStateHeart?: (value: boolean) => void
   favoriteMovieId: number
-  handleClick: () => void
-  style?: Record<string, string>
+  stateHeart?: boolean
 }
 
-const Heart = ({ favorite, handleClick, style, favoriteMovieId }: IHeart) => {
+const Heart = ({ favoriteMovieId, stateHeart, changeStateHeart }: IHeart) => {
+  const [favorite, setFavorite] = useState(setFavoriteDefaultHeart(favoriteMovieId))
+
   const dispatch = useAppDispatch()
+
   const addFavorite = () => {
-    handleClick()
     dispatch(addFavoritesMoviesId(favoriteMovieId))
+    setFavorite(!favorite)
+    if (changeStateHeart && stateHeart !== undefined) {
+      changeStateHeart(stateHeart)
+    }
+    addFavoriteIdToLocalStorage(favoriteMovieId)
   }
+
   const removeFavorite = () => {
-    handleClick()
     dispatch(removeFavoritesId(favoriteMovieId))
+    setFavorite(!favorite)
+    if (changeStateHeart && stateHeart !== undefined) {
+      changeStateHeart(stateHeart)
+    }
+    removeFavoriteIdFromLocalStorage(favoriteMovieId)
   }
+
   return (
     <div>
       {favorite ? (
@@ -34,7 +49,6 @@ const Heart = ({ favorite, handleClick, style, favoriteMovieId }: IHeart) => {
           color="red"
           onClick={removeFavorite}
           size="30"
-          style={style}
         />
       ) : (
         <AiOutlineHeart
@@ -42,7 +56,6 @@ const Heart = ({ favorite, handleClick, style, favoriteMovieId }: IHeart) => {
           color="red"
           onClick={addFavorite}
           size="30"
-          style={style}
         />
       )}
     </div>

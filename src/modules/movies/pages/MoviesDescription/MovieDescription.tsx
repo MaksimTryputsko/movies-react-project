@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 import {
@@ -20,7 +20,6 @@ interface IGenre {
 }
 const MovieDescription: React.FC = () => {
   const { id } = useParams()
-  const [favorite, setFavorite] = useState(false)
   const dispatch = useAppDispatch()
   const movieDescription = useAppSelector(movieDescriptionSelector)
 
@@ -29,8 +28,6 @@ const MovieDescription: React.FC = () => {
       dispatch(loadingDataFromTheServerDescriptionMovie(id))
     }
   }, [id, dispatch])
-
-  const handleClick = () => setFavorite(!favorite)
 
   const setRating = () => {
     if (movieDescription?.vote_average) {
@@ -57,11 +54,7 @@ const MovieDescription: React.FC = () => {
           <div>
             <Text size="L">{movieDescription.title}</Text>
           </div>
-          <Heart
-            favorite={favorite}
-            favoriteMovieId={movieDescription.id}
-            handleClick={handleClick}
-          />
+          <Heart favoriteMovieId={movieDescription.id} />
 
           <div className={styles.genresList}>
             {movieDescription.genres.map((genre: IGenre) => (
