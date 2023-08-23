@@ -18,12 +18,11 @@ const Layout = () => {
   const [disabledList, setDisabledList] = useState(true)
 
   const classes = classNames(styles.searchMoviesList, { [styles.disabled]: disabledList })
-
   useEffect(() => {
     const getSearchMoviesData = async () => {
+      setDisabledList(false)
       const searchMoviesData = await searchMoviesService.searchMovies(searchMovies)
       setSearchMoviesList(searchMoviesData.results)
-      setDisabledList(false)
     }
     getSearchMoviesData()
   }, [searchMovies])

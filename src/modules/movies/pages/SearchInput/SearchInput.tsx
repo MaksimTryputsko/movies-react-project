@@ -9,7 +9,7 @@ interface ISearchInput {
 
 const SearchInput = ({ onTextChange }: ISearchInput) => {
   const [search, setSearch] = useState("")
-  const debounceSearchMovies = useDebounce(search, 300)
+  const debounceSearchMovies = useDebounce(search, 200)
 
   const handleSearchText = (text: string) => {
     setSearch(text)
