@@ -1,9 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import { IMovie } from "../interface/imovie.interface"
-
 // eslint-disable-next-line import/no-cycle
-import { RootState } from "src/providers/store/store"
+import { RootState } from "../../../../providers/store/store"
+import { IMovie } from "../../interface/imovie.interface"
 
 interface IMovieDescriptionState {
   idMovieDescription: string

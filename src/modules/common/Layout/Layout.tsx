@@ -4,11 +4,11 @@ import { Link, Outlet } from "react-router-dom"
 
 import { Button } from "../../../components/Button"
 import { searchMoviesService } from "../../../shared/api/searchMoviesService"
-import { MAIN_PAGE } from "../../../shared/constants/path"
 import { IMovie } from "../../movies/interface/imovie.interface"
 import { SearchInput } from "../../movies/pages/SearchInput/SearchInput"
 
 import { Text } from "src/components/TextComponent/Text"
+import { MAIN_PAGE } from "src/shared/constants/path"
 
 import styles from "./layout.module.scss"
 

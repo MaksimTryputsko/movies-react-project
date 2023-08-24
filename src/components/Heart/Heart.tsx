@@ -1,11 +1,6 @@
 import React, { useState } from "react"
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 
-import { useAppDispatch } from "src/hooks/hooks"
-import {
-  addFavoritesMoviesId,
-  removeFavoritesId,
-} from "src/modules/movies/store/favoritesMoviesSlice"
 import { addFavoriteIdToLocalStorage } from "src/shared/localStorage/addFavoriteIdToLocalStorage"
 import { removeFavoriteIdFromLocalStorage } from "src/shared/localStorage/removeFavoriteIdFromLocalStorage"
 import { setFavoriteDefaultHeart } from "src/shared/localStorage/setFavoriteDefaultHeart"
@@ -21,10 +16,9 @@ interface IHeart {
 const Heart = ({ favoriteMovieId, stateHeart, changeStateHeart }: IHeart) => {
   const [favorite, setFavorite] = useState(setFavoriteDefaultHeart(favoriteMovieId))
 
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
 
   const addFavorite = () => {
-    dispatch(addFavoritesMoviesId(favoriteMovieId))
     setFavorite(!favorite)
     if (changeStateHeart && stateHeart !== undefined) {
       changeStateHeart(stateHeart)
@@ -33,7 +27,6 @@ const Heart = ({ favoriteMovieId, stateHeart, changeStateHeart }: IHeart) => {
   }
 
   const removeFavorite = () => {
-    dispatch(removeFavoritesId(favoriteMovieId))
     setFavorite(!favorite)
     if (changeStateHeart && stateHeart !== undefined) {
       changeStateHeart(stateHeart)

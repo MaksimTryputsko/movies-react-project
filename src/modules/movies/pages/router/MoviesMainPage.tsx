@@ -5,7 +5,7 @@ import { useAppSelector, useAppDispatch } from "../../../../hooks/hooks"
 import { DEFAULT_PAGE, FAVORITE_PAGE, ID_PAGES, MAIN_PAGE } from "../../../../shared/constants/path"
 import { FavoritesMovies } from "../../../FavoritesMovies/FavoritesMovies"
 import { Layout } from "../../../common/Layout/Layout"
-import { moviesSelector, loadingDataFromTheServer } from "../../store/moviesSlice"
+import { moviesSelector, loadingDataFromTheServer } from "../../store/movies/moviesSlice"
 import { MovieDescription } from "../MoviesDescription/MovieDescription"
 import { MoviesList } from "../MoviesList/MoviesList"
 

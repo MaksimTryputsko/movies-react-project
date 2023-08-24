@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import {
   loadingDataFromTheServerDescriptionMovie,
   movieDescriptionSelector,
-} from "../../store/movieDescriptionSlice"
+} from "../../store/moviesDescription/movieDescriptionSlice"
 import { RecommendationsMovies } from "../RecommendationMovies/RecommendationsMovies"
 
 import { Heart } from "src/components/Heart/Heart"

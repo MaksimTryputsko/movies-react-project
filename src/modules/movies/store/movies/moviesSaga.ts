@@ -1,9 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects"
 
-import { popularMoviesService } from "../../../shared/api/popularMoviesService"
-import { IMovie } from "../interface/imovie.interface"
+import { IMovie } from "../../interface/imovie.interface"
 
-import { addMovies, loadingDataFromTheServer, isCompletedMoviesLoading } from "./moviesSlice"
+import { popularMoviesService } from "src/shared/api/popularMoviesService"
+
+import { addMovies, isCompletedMoviesLoading, loadingDataFromTheServer } from "./moviesSlice"
 
 interface IAction {
   payload: number

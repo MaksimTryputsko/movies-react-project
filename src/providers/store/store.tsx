@@ -3,13 +3,13 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import createSagaMiddleware from "redux-saga"
 import { fork } from "redux-saga/effects"
 
-import { moviesSaga } from "../../modules/movies/store/moviesSaga"
-import { moviesReducer } from "../../modules/movies/store/moviesSlice"
+import { moviesReducer } from "../../modules/movies/store/movies/moviesSlice"
 
-import { moviesFavoritesSaga } from "src/modules/movies/store/favoriteMoviesSaga"
-import { favoritesMoviesReducer } from "src/modules/movies/store/favoritesMoviesSlice"
-import { movieDescriptionSaga } from "src/modules/movies/store/movieDescriptionSaga"
-import { movieDescriptionReducer } from "src/modules/movies/store/movieDescriptionSlice"
+import { moviesFavoritesSaga } from "src/modules/movies/store/favoritesMovies/favoriteMoviesSaga"
+import { favoritesMoviesReducer } from "src/modules/movies/store/favoritesMovies/favoritesMoviesSlice"
+import { moviesSaga } from "src/modules/movies/store/movies/moviesSaga"
+import { movieDescriptionSaga } from "src/modules/movies/store/moviesDescription/movieDescriptionSaga"
+import { movieDescriptionReducer } from "src/modules/movies/store/moviesDescription/movieDescriptionSlice"
 
 const rootReducer = combineReducers({
   movies: moviesReducer,

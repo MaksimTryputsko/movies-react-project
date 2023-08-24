@@ -4,7 +4,7 @@ import { IMovie } from "../movies/interface/imovie.interface"
 import {
   favoritesMoviesListSelector,
   loadingDataFromTheServerFavoritesMovie,
-} from "../movies/store/favoritesMoviesSlice"
+} from "../movies/store/favoritesMovies/favoritesMoviesSlice"
 
 import { useAppDispatch, useAppSelector } from "src/hooks/hooks"
 import { Movie } from "src/modules/common/Movies.tsx/Movie"

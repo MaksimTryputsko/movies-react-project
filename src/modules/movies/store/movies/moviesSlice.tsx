@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import type { RootState } from "../../../providers/store/store"
-import { IMovie } from "../interface/imovie.interface"
+import type { RootState } from "../../../../providers/store/store"
+import { IMovie } from "../../interface/imovie.interface"
 
 interface IMovieState {
   isLoading: boolean
