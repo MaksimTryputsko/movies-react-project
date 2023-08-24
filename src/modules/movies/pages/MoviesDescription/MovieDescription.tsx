@@ -1,16 +1,15 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-import {
-  loadingDataFromTheServerDescriptionMovie,
-  movieDescriptionSelector,
-} from "../../store/moviesDescription/movieDescriptionSlice"
-import { RecommendationsMovies } from "../RecommendationMovies/RecommendationsMovies"
-
 import { Heart } from "src/components/Heart/Heart"
 import { Stars } from "src/components/Stars/Stars"
 import { Text } from "src/components/TextComponent/Text"
 import { useAppDispatch, useAppSelector } from "src/hooks/hooks"
+import { RecommendationsMovies } from "src/modules/movies/pages/RecommendationMovies/RecommendationsMovies"
+import {
+  loadingDataFromTheServerDescriptionMovie,
+  movieDescriptionSelector,
+} from "src/modules/movies/store/moviesDescription/movieDescriptionSlice"
 
 import styles from "./movieDescription.module.scss"
 

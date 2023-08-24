@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 
-import { useAppSelector, useAppDispatch } from "../../../../hooks/hooks"
-import { DEFAULT_PAGE, FAVORITE_PAGE, ID_PAGES, MAIN_PAGE } from "../../../../shared/constants/path"
-import { FavoritesMovies } from "../../../FavoritesMovies/FavoritesMovies"
-import { Layout } from "../../../common/Layout/Layout"
-import { moviesSelector, loadingDataFromTheServer } from "../../store/movies/moviesSlice"
-import { MovieDescription } from "../MoviesDescription/MovieDescription"
-import { MoviesList } from "../MoviesList/MoviesList"
+import { useAppSelector, useAppDispatch } from "src/hooks/hooks"
+import { FavoritesMovies } from "src/modules/FavoritesMovies/FavoritesMovies"
+import { Layout } from "src/modules/common/Layout/Layout"
+import { MovieDescription } from "src/modules/movies/pages/MoviesDescription/MovieDescription"
+import { MoviesList } from "src/modules/movies/pages/MoviesList/MoviesList"
+import {
+  moviesSelector,
+  loadingDataFromTheServer,
+} from "src/modules/movies/store/movies/moviesSlice"
+import { DEFAULT_PAGE, FAVORITE_PAGE, ID_PAGES, MAIN_PAGE } from "src/shared/constants/path"
 
 const MoviesMain = () => {
   const [numPage, setNumPage] = useState(1)

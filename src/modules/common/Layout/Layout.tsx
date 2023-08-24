@@ -2,12 +2,11 @@ import classNames from "classnames"
 import React, { useEffect, useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
-import { Button } from "../../../components/Button"
-import { searchMoviesService } from "../../../shared/api/searchMoviesService"
-import { IMovie } from "../../movies/interface/imovie.interface"
-import { SearchInput } from "../../movies/pages/SearchInput/SearchInput"
-
+import { Button } from "src/components/Button"
 import { Text } from "src/components/TextComponent/Text"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
+import { SearchInput } from "src/modules/movies/pages/SearchInput/SearchInput"
+import { searchMoviesService } from "src/shared/api/searchMoviesService"
 import { MAIN_PAGE } from "src/shared/constants/path"
 
 import styles from "./layout.module.scss"

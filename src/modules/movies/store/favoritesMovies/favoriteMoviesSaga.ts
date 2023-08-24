@@ -1,7 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects"
 
-import { IMovie } from "../../interface/imovie.interface"
-
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
 import { movieByIdService } from "src/shared/api/movieByIdService"
 
 import {

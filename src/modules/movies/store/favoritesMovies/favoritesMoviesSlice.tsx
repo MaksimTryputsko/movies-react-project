@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import type { RootState } from "../../../../providers/store/store"
-import { IMovie } from "../../interface/imovie.interface"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
+import type { RootState } from "src/providers/store/store"
 
 interface IMovieState {
   favoritesMoviesIdList: number[]

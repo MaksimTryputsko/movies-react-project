@@ -3,11 +3,10 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import createSagaMiddleware from "redux-saga"
 import { fork } from "redux-saga/effects"
 
-import { moviesReducer } from "../../modules/movies/store/movies/moviesSlice"
-
 import { moviesFavoritesSaga } from "src/modules/movies/store/favoritesMovies/favoriteMoviesSaga"
 import { favoritesMoviesReducer } from "src/modules/movies/store/favoritesMovies/favoritesMoviesSlice"
 import { moviesSaga } from "src/modules/movies/store/movies/moviesSaga"
+import { moviesReducer } from "src/modules/movies/store/movies/moviesSlice"
 import { movieDescriptionSaga } from "src/modules/movies/store/moviesDescription/movieDescriptionSaga"
 import { movieDescriptionReducer } from "src/modules/movies/store/moviesDescription/movieDescriptionSlice"
 

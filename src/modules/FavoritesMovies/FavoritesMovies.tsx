@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
 
-import { IMovie } from "../movies/interface/imovie.interface"
+import { useAppDispatch, useAppSelector } from "src/hooks/hooks"
+import { Movie } from "src/modules/common/Movies.tsx/Movie"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
 import {
   favoritesMoviesListSelector,
   loadingDataFromTheServerFavoritesMovie,
-} from "../movies/store/favoritesMovies/favoritesMoviesSlice"
-
-import { useAppDispatch, useAppSelector } from "src/hooks/hooks"
-import { Movie } from "src/modules/common/Movies.tsx/Movie"
+} from "src/modules/movies/store/favoritesMovies/favoritesMoviesSlice"
 
 import styles from "./favoritesMovies.module.scss"
 

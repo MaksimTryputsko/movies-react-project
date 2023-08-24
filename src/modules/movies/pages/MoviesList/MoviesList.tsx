@@ -1,8 +1,8 @@
 import React from "react"
 
-import { Button } from "../../../../components/Button"
-import { Movie } from "../../../common/Movies.tsx/Movie"
-import { IMovie } from "../../interface/imovie.interface"
+import { Button } from "src/components/Button"
+import { Movie } from "src/modules/common/Movies.tsx/Movie"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
 
 import styles from "./moviesList.module.scss"
 

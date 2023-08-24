@@ -22,7 +22,7 @@ class HttpClient {
 
       return response.data
     } catch (e) {
-      return console.log(e)
+      return console.error(e)
     }
   }
 }

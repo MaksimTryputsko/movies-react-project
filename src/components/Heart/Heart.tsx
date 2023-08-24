@@ -16,8 +16,6 @@ interface IHeart {
 const Heart = ({ favoriteMovieId, stateHeart, changeStateHeart }: IHeart) => {
   const [favorite, setFavorite] = useState(setFavoriteDefaultHeart(favoriteMovieId))
 
-  // const dispatch = useAppDispatch()
-
   const addFavorite = () => {
     setFavorite(!favorite)
     if (changeStateHeart && stateHeart !== undefined) {
