@@ -1,15 +1,16 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { useParams } from "react-router-dom"
 
-import { Heart } from "src/components/Heart/Heart"
 import { Stars } from "src/components/Stars/Stars"
 import { Text } from "src/components/TextComponent/Text"
 import { useAppDispatch, useAppSelector } from "src/hooks/hooks"
+import { FavoriteHeart } from "src/modules/common/favoriteHeart/FavoriteHeart"
 import { RecommendationsMovies } from "src/modules/movies/pages/RecommendationMovies/RecommendationsMovies"
 import {
   loadingDataFromTheServerDescriptionMovie,
   movieDescriptionSelector,
 } from "src/modules/movies/store/moviesDescription/movieDescriptionSlice"
+import { setRating } from "src/shared/setRating"
 
 import styles from "./movieDescription.module.scss"
 
@@ -28,15 +29,7 @@ const MovieDescription: React.FC = () => {
     }
   }, [id, dispatch])
 
-  const setRating = () => {
-    if (movieDescription?.vote_average) {
-      const test = movieDescription.vote_average
-      const test2 = test / 2
-      return Math.round(test2)
-    }
-    return 0
-  }
-
+  const rating = useMemo(() => setRating(movieDescription), [movieDescription])
   return movieDescription ? (
     <div className={styles.descriptionContainer}>
       <div className={styles.movieDescriptionWrapper}>
@@ -53,7 +46,7 @@ const MovieDescription: React.FC = () => {
           <div>
             <Text size="L">{movieDescription.title}</Text>
           </div>
-          <Heart favoriteMovieId={movieDescription.id} />
+          <FavoriteHeart favoriteMovieId={movieDescription.id} />
 
           <div className={styles.genresList}>
             {movieDescription.genres.map((genre: IGenre) => (
@@ -66,7 +59,7 @@ const MovieDescription: React.FC = () => {
             ))}
           </div>
           <div className={styles.starsWrapper}>
-            <Stars rating={setRating()} />
+            <Stars rating={rating} />
             <Text size="S">{movieDescription.vote_average}/10</Text>
           </div>
           <div>

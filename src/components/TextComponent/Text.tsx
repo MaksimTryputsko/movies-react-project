@@ -13,7 +13,7 @@ const Text = ({ children, size, bold }: IPropsText): JSX.Element => {
     { [styles.small]: size === "S" },
     { [styles.medium]: size === "M" },
     { [styles.large]: size === "L" },
-    { [styles.bold]: bold === true },
+    { [styles.bold]: bold },
   )
   return <span className={classes}>{children}</span>
 }

@@ -11,7 +11,7 @@ const SearchInput = ({ onTextChange }: ISearchInput) => {
   const [search, setSearch] = useState("")
   const debounceSearchMovies = useDebounce(search, 200)
 
-  const handleSearchText = (text: string) => {
+  const onChangeText = (text: string) => {
     setSearch(text)
     if (search.length > 0) {
       onTextChange(debounceSearchMovies)
@@ -20,7 +20,7 @@ const SearchInput = ({ onTextChange }: ISearchInput) => {
   const clearInput = () => setSearch("")
   return (
     <Input
-      handleSearchText={handleSearchText}
+      onChangeText={onChangeText}
       onClick={clearInput}
       type="outlined"
       value={search}

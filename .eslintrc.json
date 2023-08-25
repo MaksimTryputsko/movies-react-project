@@ -12,7 +12,6 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "prettier"
-    // "./config-overrides.js"
   ],
   "plugins": ["import", "@typescript-eslint", "promise", "react"],
   "parserOptions": {

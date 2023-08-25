@@ -4,13 +4,13 @@ import { IMovie } from "src/modules/movies/interface/imovie.interface"
 import type { RootState } from "src/providers/store/store"
 
 interface IMovieState {
-  favoritesMoviesIdList: number[]
+  favoritesMoviesIdListForSendRequest: number[]
   favoritesMoviesList: IMovie[]
   isLoading: boolean
 }
 
 const initialState: IMovieState = {
-  favoritesMoviesIdList: [],
+  favoritesMoviesIdListForSendRequest: [],
   isLoading: false,
   favoritesMoviesList: [],
 }
@@ -21,7 +21,7 @@ const favoriteMoviesSlice = createSlice({
   reducers: {
     loadingDataFromTheServerFavoritesMovie: (state, action: PayloadAction<number[]>) => {
       state.isLoading = true
-      state.favoritesMoviesIdList = action.payload
+      state.favoritesMoviesIdListForSendRequest = action.payload
     },
     setFavoritesMovies: (state, action: PayloadAction<IMovie[]>) => {
       state.favoritesMoviesList = action.payload
@@ -40,7 +40,7 @@ export const {
 } = favoriteMoviesSlice.actions
 
 export const favoritesMoviesSelector = (state: RootState) =>
-  state.favoritesMovies.favoritesMoviesIdList
+  state.favoritesMovies.favoritesMoviesIdListForSendRequest
 
 export const favoritesMoviesListSelector = (state: RootState) =>
   state.favoritesMovies.favoritesMoviesList

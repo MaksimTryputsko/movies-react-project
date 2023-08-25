@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react"
-
-import { IMovie } from "../../interface/imovie.interface"
+import React, { useEffect } from "react"
 
 import { Text } from "src/components/TextComponent/Text"
+import { useAppDispatch, useAppSelector } from "src/hooks/hooks"
 import { Movie } from "src/modules/common/Movies.tsx/Movie"
-import { recommendationsMoviesService } from "src/shared/api/recommendationsMoviesService"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
+import {
+  loadingRecommendationsMoviesFromTheServer,
+  recommendationsMoviesSelector,
+} from "src/modules/movies/store/recommendationsMovies/recommendationsMoviesSlice"
 
 import styles from "./recommendationsMovies.module.scss"
 
@@ -12,17 +15,12 @@ interface IRecommendationsMovies {
   idForRecommendationsMovies: string
 }
 const RecommendationsMovies = ({ idForRecommendationsMovies }: IRecommendationsMovies) => {
-  const [recommendationsMovies, setRecommendationsMovies] = useState([])
+  const recommendationsMovies = useAppSelector(recommendationsMoviesSelector)
+  const dispatch = useAppDispatch()
+
   useEffect(() => {
-    const getRecommendationsMoviesFromServer = async () => {
-      const getRecommendationsMoviesData =
-        await recommendationsMoviesService.getRecommendationsMovies(idForRecommendationsMovies)
-      if (getRecommendationsMoviesData.results) {
-        setRecommendationsMovies(getRecommendationsMoviesData?.results.splice(0, 5))
-      }
-    }
-    getRecommendationsMoviesFromServer()
-  }, [idForRecommendationsMovies])
+    dispatch(loadingRecommendationsMoviesFromTheServer(idForRecommendationsMovies))
+  }, [dispatch, idForRecommendationsMovies])
 
   return (
     <div className={styles.recommendationsContainer}>

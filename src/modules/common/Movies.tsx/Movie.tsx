@@ -1,19 +1,20 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { Heart } from "src/components/Heart/Heart"
+import { Button } from "src/components/Button"
 import { Text } from "src/components/TextComponent/Text"
+import { FavoriteHeart } from "src/modules/common/favoriteHeart/FavoriteHeart"
 import { MAIN_PAGE } from "src/shared/constants/path"
 
 import styles from "./movie.module.scss"
 
 interface IPropsMovie {
-  changeStateHeart?: (value: boolean) => void
   date: string
   image: string
+  isSelected?: boolean
   movieId: number
+  onSelect?: (value: boolean) => void
   rating: number
-  stateHeart?: boolean
   title: string
 }
 
@@ -23,22 +24,19 @@ const Movie: React.FC<IPropsMovie> = ({
   rating,
   title,
   movieId,
-  stateHeart,
-  changeStateHeart,
+  isSelected,
+  onSelect,
 }) => {
   const [year] = date.split("-")
   return (
     <div className={styles.wrapperForPosterImage}>
-      <button
-        className={styles.iconHeart}
-        type="button"
-      >
-        <Heart
-          changeStateHeart={changeStateHeart}
+      <Button type="text">
+        <FavoriteHeart
           favoriteMovieId={movieId}
-          stateHeart={stateHeart}
+          isSelected={isSelected}
+          onSelect={onSelect}
         />
-      </button>
+      </Button>
       <Link to={`${MAIN_PAGE}/${movieId}`}>
         <div className={styles.poster}>
           <div

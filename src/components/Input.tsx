@@ -2,16 +2,16 @@ import InputMUI from "@mui/material/TextField"
 import React from "react"
 
 interface IInput {
-  handleSearchText: (value: string) => void
+  onChangeText: (value: string) => void
   onClick: () => void
   type: "outlined" | "filled" | "standard"
   value: string
 }
 
-const Input = ({ value, type, handleSearchText, onClick }: IInput) => {
+const Input = ({ value, type, onChangeText, onClick }: IInput) => {
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const getText = e.target.value
-    handleSearchText(getText)
+    onChangeText(getText)
   }
   return (
     <InputMUI
