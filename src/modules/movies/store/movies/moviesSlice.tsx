@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-import type { RootState } from "../../../providers/store/store"
-import { IMovie } from "../interface/imovie.interface"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
+import type { RootState } from "src/providers/store/store"
 
 interface IMovieState {
   isLoading: boolean
@@ -26,15 +26,14 @@ const moviesSlice = createSlice({
     addMovies: (state, action: PayloadAction<IMovie[]>) => {
       state.list = action.payload
     },
-    isCompletedLoadingDataFromTheServer: (state) => {
+    isCompletedMoviesLoading: (state) => {
       state.isLoading = false
     },
   },
 })
 const moviesReducer = moviesSlice.reducer
 
-export const { addMovies, loadingDataFromTheServer, isCompletedLoadingDataFromTheServer } =
-  moviesSlice.actions
+export const { addMovies, loadingDataFromTheServer, isCompletedMoviesLoading } = moviesSlice.actions
 
 export const moviesSelector = (state: RootState) => state.movies.list
 export { moviesReducer }

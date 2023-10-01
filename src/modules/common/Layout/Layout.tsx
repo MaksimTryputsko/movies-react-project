@@ -2,11 +2,12 @@ import classNames from "classnames"
 import React, { useEffect, useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
-import { Button } from "../../../components/Button"
-import { searchMoviesService } from "../../../shared/api/searchMoviesService"
-import { MAIN_PAGE } from "../../../shared/constants/path"
-import { IMovie } from "../../movies/interface/imovie.interface"
-import { SearchInput } from "../../movies/pages/SearchInput/SearchInput"
+import { Button } from "src/components/Button"
+import { Text } from "src/components/TextComponent/Text"
+import { IMovie } from "src/modules/movies/interface/imovie.interface"
+import { SearchInput } from "src/modules/movies/pages/SearchInput/SearchInput"
+import { searchMoviesService } from "src/shared/api/searchMoviesService"
+import { MAIN_PAGE } from "src/shared/constants/path"
 
 import styles from "./layout.module.scss"
 
@@ -14,21 +15,15 @@ const Layout = () => {
   const [searchMovies, setSearchMovies] = useState("")
   const [searchMoviesList, setSearchMoviesList] = useState([])
   const [disabledList, setDisabledList] = useState(true)
-  const [clearSearchInput, setClearSearchInput] = useState(false)
 
   const classes = classNames(styles.searchMoviesList, { [styles.disabled]: disabledList })
-
   useEffect(() => {
-    try {
-      const getSearchMoviesData = async () => {
-        const searchMoviesData = await searchMoviesService.searchMovies(searchMovies)
-        setSearchMoviesList(searchMoviesData.results)
-        setDisabledList(false)
-      }
-      getSearchMoviesData()
-    } catch (error) {
-      console.error(error)
+    const getSearchMoviesData = async () => {
+      setDisabledList(false)
+      const searchMoviesData = await searchMoviesService.searchMovies(searchMovies)
+      setSearchMoviesList(searchMoviesData.results)
     }
+    getSearchMoviesData()
   }, [searchMovies])
 
   const onTextChange = (value: string) => {
@@ -36,9 +31,7 @@ const Layout = () => {
   }
   const handleClick = () => {
     setDisabledList(true)
-    setClearSearchInput(true)
   }
-
   return (
     <>
       <header className={styles.header}>
@@ -46,14 +39,10 @@ const Layout = () => {
           onClick={handleClick}
           to={MAIN_PAGE}
         >
-          Movie Searcher
+          <Text size="S">Movie Searcher</Text>
         </Link>
         <div>
-          <SearchInput
-            clearSearchInput={clearSearchInput}
-            onTextChange={onTextChange}
-            setClearSearchInput={setClearSearchInput}
-          />
+          <SearchInput onTextChange={onTextChange} />
           {searchMoviesList.length > 0 && (
             <ul className={classes}>
               {searchMoviesList.map((movie: IMovie) => (
@@ -62,20 +51,17 @@ const Layout = () => {
                   onClick={handleClick}
                   to={`${movie.id}`}
                 >
-                  <li>{movie.title}</li>
+                  <Text size="S">
+                    <li>{movie.title}</li>
+                  </Text>
                 </Link>
               ))}
             </ul>
           )}
         </div>
-        <Button
-          onClick={() => {
-            console.log("test")
-          }}
-          type="outlined"
-        >
-          Favorite
-        </Button>
+        <Link to="/home/favoritesMovies">
+          <Button type="outlined">Favorite</Button>
+        </Link>
       </header>
 
       <Outlet />

@@ -1,0 +1,11 @@
+.recommendationsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapperForRecommendationMovies {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
