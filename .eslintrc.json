@@ -11,12 +11,13 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "./config-overrides.js"
   ],
   "plugins": ["import", "@typescript-eslint", "promise", "react"],
   "parserOptions": {
     "project": ["./tsconfig.json"],
+    // "tsconfigRootDir": "config-overrides.js",
     "sourceType": "module",
     "ecmaVersion": 2019
   },
@@ -32,6 +33,7 @@
     }
   },
   "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
     "react/function-component-definition": [
       2,
       {
@@ -70,14 +72,7 @@
       2,
       {
         "default": {
-          "memberTypes": [
-            "signature",
-            "field",
-            "constructor",
-            "get",
-            "set",
-            "method"
-          ],
+          "memberTypes": ["signature", "field", "constructor", "get", "set", "method"],
           "order": "alphabetically-case-insensitive"
         }
       }
@@ -90,13 +85,8 @@
     "import/no-self-import": 2,
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "import/no-extraneous-dependencies": [
-      2,
-      {
-        "devDependencies": [],
-        "peerDependencies": false,
-        "optionalDependencies": false,
-        "bundledDependencies": false
-      }
+      "error",
+      { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
     ],
     "import/newline-after-import": 2,
     "import/order": [
@@ -105,14 +95,7 @@
         "alphabetize": {
           "order": "asc"
         },
-        "groups": [
-          "builtin",
-          "external",
-          "parent",
-          "internal",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "parent", "internal", "sibling", "index"],
         "newlines-between": "always"
       }
     ]
